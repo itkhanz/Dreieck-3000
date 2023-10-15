@@ -11,6 +11,8 @@ This theorem simply states that the sum of two sides of a triangle must be great
 If this is true for all three combinations, then you will have a valid triangle.
 */
 public class Triangle {
+    public static final int MIN_VALUE = 1;
+    public static final int MAX_VALUE = 99;
     private int side1;
     private int side2;
     private int side3;
@@ -43,30 +45,25 @@ public class Triangle {
         }
     }
 
-    public static int getUserInput(Scanner scanner, String message) {
-        int userInput = -1;
-        int minValue = 1;
-        int maxValue = 99;
+    public static int getTriangleSideFromUserInput(String inputLine) {
+        //This approach handles cases where the input number exceeds the int range and provides appropriate feedback to the user.
+        //This will also catch the space in NumberFormatException
+        try {
+            int userInput = Integer.parseInt(inputLine);
 
-        while (true) {
-            try {
-                System.out.print(message);
-                String inputLine = scanner.nextLine();
-                //This approach handles cases where the input number exceeds the int range and provides appropriate feedback to the user.
-                //This will also catch the space in NumberFormatException
-                userInput = Integer.parseInt(inputLine);
-
-                if (userInput >= minValue && userInput <= maxValue) {
-                    break;
-                } else {
-                    System.out.println("Input should be between " + minValue + " and " + maxValue + ".");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid numeric Integer value.");
+            if (userInput >= MIN_VALUE && userInput <= MAX_VALUE) {
+                return userInput;
+            } else {
+                throw new IllegalArgumentException("Input should be between " + MIN_VALUE + " and " + MAX_VALUE + ".");
             }
+        }  catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid input. Please enter a valid numeric Integer value.");
         }
+    }
 
-        return userInput;
+    public static int getUserInput(Scanner scanner, String message) {
+        System.out.print(message);
+        return getTriangleSideFromUserInput(scanner.nextLine());
     }
 
     public static void main(String[] args) {

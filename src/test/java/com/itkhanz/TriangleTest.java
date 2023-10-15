@@ -2,7 +2,10 @@ package com.itkhanz;
 
 import org.junit.Test;
 
+import java.util.Scanner;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class TriangleTest {
     @Test
@@ -29,13 +32,6 @@ public class TriangleTest {
         assertEquals("These sides do not form a valid triangle.", triangle.checkTriangleType());
     }
 
-    /*@Test
-    public void testInputValidation() {
-        // You need to simulate input for non-numeric characters or values exceeding the int range
-        // and assert that the appropriate error message is displayed.
-        //This scenario is already handled in getUserInput() method
-    }*/
-
     @Test
     public void testMinimumValueTriangle() {
         Triangle triangle = new Triangle(1, 1, 1);
@@ -59,4 +55,72 @@ public class TriangleTest {
         Triangle triangle = new Triangle(1, 49, 99);
         assertEquals("These sides do not form a valid triangle.", triangle.checkTriangleType());
     }
+
+    @Test
+    public void testInputValidationForSpace() {
+        // Use assertThrows to verify that an IllegalArgumentException is thrown
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+           Triangle.getTriangleSideFromUserInput(" ");
+        });
+
+        // Verify the exception message
+        assertEquals("Invalid input. Please enter a valid numeric Integer value.", exception.getMessage());
+    }
+
+    @Test
+    public void testInputValidationForNonNumericCharacter() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            Triangle.getTriangleSideFromUserInput("@");
+        });
+        assertEquals("Invalid input. Please enter a valid numeric Integer value.", exception.getMessage());
+    }
+
+    @Test
+    public void testInputValidationForCharacter() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            Triangle.getTriangleSideFromUserInput("c");
+        });
+        assertEquals("Invalid input. Please enter a valid numeric Integer value.", exception.getMessage());
+    }
+
+    @Test
+    public void testInputValidationForString() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            Triangle.getTriangleSideFromUserInput("I am invalid input");
+        });
+        assertEquals("Invalid input. Please enter a valid numeric Integer value.", exception.getMessage());
+    }
+
+    @Test
+    public void testInputValidationForNumberGreaterThanIntLimit() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            Triangle.getTriangleSideFromUserInput("10000000000000000000000");
+        });
+        assertEquals("Invalid input. Please enter a valid numeric Integer value.", exception.getMessage());
+    }
+
+    @Test
+    public void testInputValidationForNegativeNumber() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            Triangle.getTriangleSideFromUserInput("-1");
+        });
+        assertEquals("Input should be between " + Triangle.MIN_VALUE + " and " + Triangle.MAX_VALUE + ".", exception.getMessage());
+    }
+
+    @Test
+    public void testInputValidationForZero() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            Triangle.getTriangleSideFromUserInput("0");
+        });
+        assertEquals("Input should be between " + Triangle.MIN_VALUE + " and " + Triangle.MAX_VALUE + ".", exception.getMessage());
+    }
+
+    @Test
+    public void testInputValidationForNumberGreaterThanMaxLimit() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            Triangle.getTriangleSideFromUserInput("100");
+        });
+        assertEquals("Input should be between " + Triangle.MIN_VALUE + " and " + Triangle.MAX_VALUE + ".", exception.getMessage());
+    }
+
 }
