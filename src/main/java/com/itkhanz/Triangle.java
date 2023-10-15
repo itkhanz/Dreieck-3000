@@ -21,12 +21,22 @@ public class Triangle {
         this.side3 = side3;
     }
 
+    private boolean isTriangleEquilateral() {
+        return side1 == side2 && side2 == side3;
+    }
+    private boolean isTriangleIsosceles() {
+        return side1 == side2 || side2 == side3 || side1 == side3;
+    }
+    private boolean isTriangleScalene() {
+        return side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1;
+    }
+
     public String checkTriangleType() {
-        if (side1 == side2 && side2 == side3) {
+        if (isTriangleEquilateral()) {
             return "Equilateral triangle (Gleichseitiges Dreieck)";
-        } else if (side1 == side2 || side2 == side3 || side1 == side3) {
+        } else if (isTriangleIsosceles()) {
             return "Isosceles triangle (Gleichschenkliges Dreieck)";
-        } else if (side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1) {
+        } else if (isTriangleScalene()) {
             return "Scalene triangle (unregelmäßiges Dreieck)";
         } else {
             return "These sides do not form a valid triangle.";
