@@ -1,5 +1,7 @@
 # Dreieck 3000
 
+A simple java program to demonstrate the usage of unit tests written in JUnit.
+
 * Equilateral triangle: All sides are equal in length.
 * Equilateral triangle: All sides are equal in length.
 * Equilateral triangle: All sides are equal in length.
@@ -27,10 +29,16 @@ mvn clean compile
 java -cp target/classes com.itkhanz.Triangle
 ```
 
+> Once the application is compiled, you can also navigate to project root directory, 
+> and run the command `run_triangle.bat` in the commandline to run the application.
+
 ## Running Tests
 ```shell
 mvn clean test
 ```
+* Here are the test results:
+
+<img src="doc/test-results.PNG">
 
 ## Unit Tests
 
@@ -51,10 +59,6 @@ Moreover, some unit test cases are also added for user input validation for foll
 * Number outside the valid range
 * Non-Numeric Inputs (character, Strings, space)
 * Number exceeding Integer limit
-
-* Here are the test results:
-
-<img src="doc/test-results.PNG">
 
 * Below image demonstrates the input validation
 
