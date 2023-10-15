@@ -52,9 +52,9 @@ mvn clean test
 This application also has unit tests written using JUnit4 to test the important flows:
 
 1. **Equilateral Triangle Test**: Provide three equal sides (e.g., 5, 5, 5) as input. The expected result is "Equilateral triangle."
-2. **Isosceles Triangle Test**: Provide two equal sides (e.g., 3, 3, 4) as input. The expected result is "Isosceles triangle."
-3. **Scalene Triangle Test**: Provide three different sides (e.g., 3, 4, 5) as input. The expected result is "Scalene triangle."
-4. **Invalid Triangle Test**: Provide sides that cannot form a valid triangle (e.g., 1, 2, 3). The expected result is "Not a triangle."
+2. **Isosceles Triangle Test**: Provide two equal sides (e.g., 5, 5, 4) as input. The expected result is "Isosceles triangle."
+3. **Scalene Triangle Test**: Provide three different sides (e.g., 5, 4, 3) as input. The expected result is "Scalene triangle."
+4. **Invalid Triangle Test**: Provide sides that cannot form a valid triangle e.g. (5, 5, 10) or (1, 2, 3) because of triangle inequality theorem. The expected result is "Not a triangle."
 5. **Minimum Value Test**: Provide the minimum possible values (1, 1, 1) as input.  The expected result is "Equilateral triangle."
 6. **Maximum Value Test**: Provide the maximum possible values (99, 99, 99) as input. The expected result is "Equilateral triangle."
 7. **Edge Case Test**: Test the edge case where one side has the minimum value (1), and the other two sides have maximum values (99). The expected result is "Scalene triangle."
