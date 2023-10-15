@@ -57,8 +57,8 @@ This application also has unit tests written using JUnit4 to test the important 
 4. **Invalid Triangle Test**: Provide sides that cannot form a valid triangle e.g. (5, 5, 10) or (1, 2, 3) because of triangle inequality theorem. The expected result is "Not a triangle."
 5. **Minimum Value Test**: Provide the minimum possible values (1, 1, 1) as input.  The expected result is "Equilateral triangle."
 6. **Maximum Value Test**: Provide the maximum possible values (99, 99, 99) as input. The expected result is "Equilateral triangle."
-7. **Edge Case Test**: Test the edge case where one side has the minimum value (1), and the other two sides have maximum values (99). The expected result is "Scalene triangle."
-8. **Large Difference Test**: Test a case where the difference between sides is large but still forms a valid triangle (e.g., 10, 30, 40). The expected result is "Scalene triangle."
+7. **Edge Case Test**: Test the edge case where one side has the minimum value (1), and the other two sides have maximum values (99). The expected result is "Isosceles triangle."
+8. **Large Difference Test**: Test a case where the difference between sides is large but still forms a valid triangle (e.g., 1, 49, 99). The expected result is "Not a triangle."
 
 Moreover, some unit test cases are also added for user input validation for following cases:
 * Negative Number
