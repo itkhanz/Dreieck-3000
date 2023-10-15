@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 /*
 Equilateral triangle: All sides are equal in length.
-Equilateral triangle: All sides are equal in length.
-Equilateral triangle: All sides are equal in length.
+Isosceles triangle: Two sides are equal in length.
+Scalene triangle: All sides have different lengths.
 Triangle Inequality Theorem
 This theorem simply states that the sum of two sides of a triangle must be greater than the third side.
 If this is true for all three combinations, then you will have a valid triangle.
@@ -29,23 +29,27 @@ public class Triangle {
     private boolean isTriangleIsosceles() {
         return side1 == side2 || side2 == side3 || side1 == side3;
     }
-    private boolean isTriangleScalene() {
+    private boolean isTriangleScalene()  {
+        return side1 != side2 && side1 != side3 && side2 != side3;
+    }
+    private boolean isValidTriangle() {
         return side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1;
     }
 
     public String checkTriangleType() {
-        if (isTriangleEquilateral()) {
-            return "Equilateral triangle (Gleichseitiges Dreieck)";
-        } else if (isTriangleIsosceles()) {
-            return "Isosceles triangle (Gleichschenkliges Dreieck)";
-        } else if (isTriangleScalene()) {
-            return "Scalene triangle (unregelmäßiges Dreieck)";
-        } else {
-            return "These sides do not form a valid triangle.";
+        if (isValidTriangle()) {
+            if (isTriangleEquilateral()) {
+                return "Equilateral triangle (Gleichseitiges Dreieck)";
+            } else if (isTriangleIsosceles()) {
+                return "Isosceles triangle (Gleichschenkliges Dreieck)";
+            } else {
+                return "Scalene triangle (unregelmäßiges Dreieck)";
+            }
         }
+        return "These sides do not form a valid triangle.";
     }
 
-    public static int getTriangleSideFromUserInput(String inputLine) {
+    public static int validateTriangleSideFromUserInput(String inputLine) {
         //This approach handles cases where the input number exceeds the int range and provides appropriate feedback to the user.
         //This will also catch the space in NumberFormatException
         try {
@@ -63,7 +67,7 @@ public class Triangle {
 
     public static int getUserInput(Scanner scanner, String message) {
         System.out.print(message);
-        return getTriangleSideFromUserInput(scanner.nextLine());
+        return validateTriangleSideFromUserInput(scanner.nextLine());
     }
 
     public static void main(String[] args) {
