@@ -2,9 +2,9 @@
 
 A simple java program to demonstrate the usage of unit tests written in JUnit.
 
-* Equilateral triangle: All sides are equal in length.
-* Equilateral triangle: All sides are equal in length.
-* Equilateral triangle: All sides are equal in length.
+* [Equilateral triangle](https://www.splashlearn.com/math-vocabulary/geometry/equilateral-triangle): All sides are equal in length.
+* [Isosceles triangle](https://www.splashlearn.com/math-vocabulary/geometry/isosceles-triangle): Two sides are equal in length.
+* [Scalene triangle](https://splashlearn.com/math-vocabulary/geometry/scalene-triangle): All sides have different lengths.
 * [Types of Triangle](https://www.cuemath.com/geometry/types-of-triangle/)
 
 * [Triangle Inequality Theorem](https://www.wikihow.com/Determine-if-Three-Side-Lengths-Are-a-Triangle)
@@ -22,8 +22,15 @@ A simple java program to demonstrate the usage of unit tests written in JUnit.
 
 <img src="doc/app-flow.PNG">
 
+## Requirements
+
+* Java JDK 17
+* Maven
+* IDE (IntelliJ recommended to run the application and tests from within IDE)
 
 ## Running application
+* Clone the repo, and open the `POM.xml` to download and install the project dependencies.
+* Run the application and tests from within IDE or through commandline as below:
 ```shell
 mvn clean compile
 java -cp target/classes com.itkhanz.Triangle
